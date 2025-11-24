@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Елітний масажний салон "Релакс"</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💆</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #c19a6b;
+            --secondary: #8b7355;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e8e8e8;
+            --gray: #2a2a2a;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--darker);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        .auth-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .auth-icon {
+            background: var(--gray);
+            border: none;
+            color: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .auth-icon:hover {
+            background: var(--primary);
+            color: var(--darker);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(193, 154, 107, 0.1) 0%, transparent 60%);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+        
+        .tg-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0088cc;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .tg-button:hover {
+            background-color: #006699;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background-color: var(--darker);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .about p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .features {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .feature {
+            background: var(--gray);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature i {
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 20px;
+            background-color: var(--dark);
+        }
+        
+        .reviews h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .reviews h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .review {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            flex: 1;
+            min-width: 300px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: #e8e8e8;
+        }
+        
+        .review-author {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .review-author::before {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: #aaa;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--gray);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .features {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .review {
+                min-width: 100%;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-spa"></i>
+                    <span>Елітний масажний салон "Релакс"</span>
+                </div>
+                <div class="auth-icons">
+                    <button class="auth-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Вхід</span>
+                    </button>
+                    <button class="auth-icon">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Реєстрація</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container fade-in">
+            <h1>Професійний масаж для вашого здоров'я та гарного самопочуття</h1>
+            <p>Насолоджуйтесь найкращими масажними процедурами від досвідчених майстрів по всій Україні</p>
+            <a href="https://t.me/Sextut365" class="tg-button">
+                <i class="fab fa-telegram-plane"></i>
+                Написати в Telegram
+            </a>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h2>Про нас</h2>
+                    <p>Ми працюємо більше 8 років і маємо безліч позитивних відгуків. Наші майстрині працюють у всіх великих містах України, забезпечуючи високоякісні послуги масажу для наших клієнтів.</p>
+                    <p style="margin-top: 20px;">Наш підхід поєднує традиційні техніки масажу з сучасними методиками, що дозволяє досягти максимального ефекту для кожного клієнта.</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-award"></i>
+                        <h3>Досвід роботи</h3>
+                        <p>Понад 8 років на ринку</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Широка географія</h3>
+                        <p>Працюємо по всій Україні</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <h3>Кваліфіковані майстри</h3>
+                        <p>Професійний підхід</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h3>Індивідуальний підхід</h3>
+                        <p>Персональна програма для кожного</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="reviews">
+        <div class="container">
+            <h2 class="fade-in">Відгуки клієнтів</h2>
+            <div class="review-container">
+                <div class="review fade-in">
+                    <p class="review-text">Дуже задоволена відвідуванням салону! Майстер Олена зробила чудовий релаксуючий масаж, після якого відчула себе абсолютно новою людиною. Обов'язково прийду ще!</p>
+                    <p class="review-author">Марія Петренко</p>
+                </div>
+                <div class="review fade-in">
+                    <p class="review-text">Відмінний салон з професійним підходом. Ходив на лікувальний масаж спини після травми, і вже після кількох сеансів відчув значне покращення. Рекомендую!</p>
+                    <p class="review-author">Олексій Коваленко</p>
+                </div>
+                <div class="review fade-in">
+                    <p class="review-text">Дякую за чудовий антицелюлітний масаж! Результат помітний вже після місяця регулярних відвідувань. Персонал дуже приємний, атмосфера затишна.</p>
+                    <p class="review-author">Тетяна Шевченко</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+                <p>© 2018 Всі права захищені. Елітний масажний салон "Релакс"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Исправленный код анимации
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            // Инициализация элементов
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Вызываем функцию сразу для элементов в области видимости
+            fadeInOnScroll();
+            
+            // Добавляем обработчик события прокрутки
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>
